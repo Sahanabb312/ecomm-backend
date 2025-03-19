@@ -4,7 +4,7 @@ const {User}=require('./model/User');
 const mongoose = require('mongoose');//this is the path of th mongodb//this line and the //it inports mongobd         //below line are copied from mongoosejs.com
 const cors=require('cors');//connect frontend and backend to run them together
 const morgan=require('morgan')//used to run and shoe http error
-const bcrypt=require('bcrypt');//secure password unique provide security
+const bcrypt=require('bcryptjs');//secure password unique provide security
 const jwt=require('jsonwebtoken');//provide athorization check the user name and password are matching
 const {Product}=require('./model/Product');
 const {Cart}=require('./model/Cart');
@@ -14,7 +14,11 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan('dev'));
 
-mongoose.connect('mongodb://127.0.0.1:27017/kleProject')//remove test from here and add your db name
+//MFABqAQUTezRfzdO
+
+let MONGODB_URL="mongodb+srv://sahanabavalatti312:MFABqAQUTezRfzdO@cluster0.dbtdu.mongodb.net/?retryWrites=true&w=majority"
+
+mongoose.connect(MONGODB_URL)//remove test from here and add your db name
 .then(()=>{
     console.log("DB is connected")
 }).catch((err)=>{
